@@ -1,7 +1,7 @@
 const functions = require("firebase-functions");
 const admin = require("firebase-admin");
 
-function convertPlaceToPoints(place, wonOut = false) {
+function convertPlaceToPoints(place, wonOut = false, showType = "kc") {
   const pointsMap = {
     1: 20,
     2: 19,
@@ -47,7 +47,11 @@ exports.dogScoreAdded = functions.firestore
     const runData = snap.data();
 
     const { league } = runData;
-    const newPoints = convertPlaceToPoints(runData.place, runData.wonOut);
+    const newPoints = convertPlaceToPoints(
+      runData.place,
+      runData.wonOut,
+      runData.showType
+    );
 
     //Add a prop in the runs object of [run.id]: points
     await dog.update({

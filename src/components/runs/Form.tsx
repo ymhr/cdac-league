@@ -60,7 +60,7 @@ function RunForm({ form, doc, dog, run, onSave }: Props & FormComponentProps) {
   const SpecificFields = sportSpecificFields[sport] || null;
 
   let data = (!!doc && doc.data()) || {};
-  console.log(data);
+
   let dogData = dog.data();
   const dogLeagues =
     (dogData &&
@@ -187,6 +187,23 @@ function RunForm({ form, doc, dog, run, onSave }: Props & FormComponentProps) {
           initialValue: moment(data.date)
         })(<DatePicker format="YYYY-MM-DD" />)}
       </Form.Item>
+      <Form.Item label="Show type">
+        {getFieldDecorator("showType", {
+          rules: [
+            {
+              required: true,
+              message: "Which official body is this show associated with?"
+            }
+          ],
+          initialValue: data.showType || "kc"
+        })(
+          <Select>
+            <Select.Option value="kc">KC (Kennel Club)</Select.Option>
+            <Select.Option value="uka">UKA (UK Agility)</Select.Option>
+            <Select.Option value="independant">Independant</Select.Option>
+          </Select>
+        )}
+      </Form.Item>
       <Form.Item label="Place">
         {getFieldDecorator("place", {
           rules: [
@@ -216,6 +233,11 @@ function RunForm({ form, doc, dog, run, onSave }: Props & FormComponentProps) {
       <Form.Item label="Did you win into a new grade?">
         {getFieldDecorator("wonOut", {
           initialValue: data.wonOut
+        })(<Switch checkedChildren="Yes" unCheckedChildren="No" />)}
+      </Form.Item>
+      <Form.Item label="Clear round?">
+        {getFieldDecorator("clearRound", {
+          initialValue: data.clearRound
         })(<Switch checkedChildren="Yes" unCheckedChildren="No" />)}
       </Form.Item>
       <Form.Item label="Description">
