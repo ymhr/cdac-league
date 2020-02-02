@@ -114,6 +114,33 @@ export default function League({ doc }: LeagueProps) {
       .update({ open: state });
   }
 
+  async function toggleCurrent(state: boolean, e: MouseEvent) {
+    e.stopPropagation();
+
+    //Get the currently open leagues
+    const currentLeagues = await firebase
+      .firestore()
+      .collection("leagues")
+      .where("current", "==", true)
+      .get();
+
+    // Make the other leagues not current
+    currentLeagues.forEach(doc => {
+      firebase
+        .firestore()
+        .collection("leagues")
+        .doc(doc.id)
+        .update({ current: false });
+    });
+
+    //Make this league current
+    firebase
+      .firestore()
+      .collection("leagues")
+      .doc(doc.id)
+      .update({ current: state });
+  }
+
   return (
     <Collapse>
       <Collapse.Panel
@@ -125,8 +152,14 @@ export default function League({ doc }: LeagueProps) {
               <Switch
                 unCheckedChildren="Closed"
                 checkedChildren="Open"
-                checked={data.open}
+                checked={data.open || false}
                 onChange={toggleOpen}
+              />
+              <Switch
+                checkedChildren="Current"
+                unCheckedChildren="Old"
+                checked={data.current || false}
+                onChange={toggleCurrent}
               />
             </FloatRight>
           </h2>
