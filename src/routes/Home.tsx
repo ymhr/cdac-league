@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import { Row, Col } from "antd";
 
 const BorderedTable = styled.table`
   td {
@@ -12,72 +13,115 @@ export default function Home() {
   return (
     <>
       <h1>Welcome to the CDAC League!</h1>
-      <p>
-        Welcome the Miniature American Shepherd Agility League. This is just for
-        fun!
-      </p>
-      <p>
-        This is open to anyone who runs a Miniature American Shepherd in agility
-        in the UK. To join it is £4 per dog.
-      </p>
-      <p>
-        The league will run from the first of January until the 20th of
-        December. All shows and placings count, including special classes.
-      </p>
 
-      <h3>Points</h3>
-      <BorderedTable>
-        <tbody>
-          <tr>
-            <td>1st</td>
-            <td>20</td>
-          </tr>
-          <tr>
-            <td>2nd</td>
-            <td>19</td>
-          </tr>
-          <tr>
-            <td>3rd</td>
-            <td>18</td>
-          </tr>
-          <tr>
-            <td>4th</td>
-            <td>17</td>
-          </tr>
-          <tr>
-            <td>5th</td>
-            <td>16</td>
-          </tr>
-          <tr>
-            <td>6th</td>
-            <td>15</td>
-          </tr>
-          <tr>
-            <td>7th</td>
-            <td>14</td>
-          </tr>
-          <tr>
-            <td>8th</td>
-            <td>13</td>
-          </tr>
-          <tr>
-            <td>9th</td>
-            <td>12</td>
-          </tr>
-          <tr>
-            <td>10th</td>
-            <td>11</td>
-          </tr>
-          <tr>
-            <td>10+</td>
-            <td>10</td>
-          </tr>
-          <tr>
-            <td>Clear rounds</td>
-            <td>2</td>
-          </tr>
-        </tbody>
-      </BorderedTable>
+      <Row>
+        <Col span={6}>
+          <h3>KC Points</h3>
+          <BorderedTable>
+            <tbody>
+              <tr>
+                <td>1st</td>
+                <td>20</td>
+              </tr>
+              <tr>
+                <td>2nd</td>
+                <td>19</td>
+              </tr>
+              <tr>
+                <td>3rd</td>
+                <td>18</td>
+              </tr>
+              <tr>
+                <td>4th</td>
+                <td>17</td>
+              </tr>
+              <tr>
+                <td>5th</td>
+                <td>16</td>
+              </tr>
+              <tr>
+                <td>6th</td>
+                <td>15</td>
+              </tr>
+              <tr>
+                <td>7th</td>
+                <td>14</td>
+              </tr>
+              <tr>
+                <td>8th</td>
+                <td>13</td>
+              </tr>
+              <tr>
+                <td>9th</td>
+                <td>12</td>
+              </tr>
+              <tr>
+                <td>10th</td>
+                <td>11</td>
+              </tr>
+              <tr>
+                <td>10+</td>
+                <td>10</td>
+              </tr>
+              <tr>
+                <td>Clear rounds</td>
+                <td>2</td>
+              </tr>
+            </tbody>
+          </BorderedTable>
+        </Col>
+        <Col span={6}>
+          <h3>Other Points</h3>
+          <BorderedTable>
+            <tbody>
+              <tr>
+                <td>1st</td>
+                <td>10</td>
+              </tr>
+              <tr>
+                <td>2nd</td>
+                <td>9</td>
+              </tr>
+              <tr>
+                <td>3rd</td>
+                <td>8</td>
+              </tr>
+              <tr>
+                <td>4th</td>
+                <td>7</td>
+              </tr>
+              <tr>
+                <td>5th</td>
+                <td>6</td>
+              </tr>
+              <tr>
+                <td>6th</td>
+                <td>5</td>
+              </tr>
+              <tr>
+                <td>7th</td>
+                <td>4</td>
+              </tr>
+              <tr>
+                <td>8th</td>
+                <td>3</td>
+              </tr>
+              <tr>
+                <td>9th</td>
+                <td>2</td>
+              </tr>
+              <tr>
+                <td>10th+</td>
+                <td>1</td>
+              </tr>
+              <tr>
+                <td>Clear rounds</td>
+                <td>1</td>
+              </tr>
+            </tbody>
+          </BorderedTable>
+        </Col>
+      </Row>
       <p>
         <strong>
           All classes count, including special classes and fun classes
