@@ -2,7 +2,7 @@ const functions = require("firebase-functions");
 const admin = require("firebase-admin");
 
 function convertPlaceToPoints(place, wonOut = false, showType = "kc") {
-  const pointsMap = {
+  const kcPointsMap = {
     1: 20,
     2: 19,
     3: 18,
@@ -17,7 +17,24 @@ function convertPlaceToPoints(place, wonOut = false, showType = "kc") {
     upc: 2
   };
 
-  let points = pointsMap[place] || 10;
+  const otherPointsMap = {
+    1: 10,
+    2: 9,
+    3: 8,
+    4: 7,
+    5: 6,
+    6: 5,
+    7: 4,
+    8: 3,
+    9: 2,
+    10: 1,
+    "10+": 1,
+    upc: 1
+  };
+
+  const pointsToUse = showType === "kc" ? kcPointsMap : otherPointsMap;
+
+  let points = pointsToUse[place] || 1;
 
   if (wonOut) points += 10;
 
